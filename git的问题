@@ -19,5 +19,10 @@ $ git status
 ->查看修改内容
 $ git diff <file>
 
-
-
+->回到commit_id指定的地方
+$ git reset --hard commit_id  
+->查看提交历史
+$ git log
+$ git log --pretty=oneline(简洁版)
+->查看命令历史
+$ it reflog
