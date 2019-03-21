@@ -1,0 +1,4 @@
+1.在windows提示 SSL certificate problem: self signed certificate
+解决办法：命令行
+set GIT_SSL_NO_VERIFY=true git clone回车
+git config --global http.sslVerify false回车
