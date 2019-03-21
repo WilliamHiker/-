@@ -25,4 +25,9 @@ $ git reset --hard commit_id
 $ git log
 $ git log --pretty=oneline(简洁版)
 ->查看命令历史
-$ it reflog
+$ git reflog
+
+->丢掉工作区的东西
+$ git checkout -- <file>
+->丢掉缓存区的东西
+$ git reset HEAD <file>
