@@ -19,8 +19,8 @@ $ git status
 ->查看修改内容
 $ git diff <file>
 
-->回到commit_id指定的地方
-$ git reset --hard commit_id  
+->回到commit_id指定的地方 commit_id写前几个字符就行
+$ git reset --hard <commit_id>  
 ->查看提交历史
 $ git log
 $ git log --pretty=oneline(简洁版)
@@ -31,3 +31,6 @@ $ git reflog
 $ git checkout -- <file>
 ->丢掉缓存区的东西
 $ git reset HEAD <file>
+
+->删除一个文件
+$ git rm <file>
