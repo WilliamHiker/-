@@ -57,3 +57,8 @@ $ git checkout -b <name>
 $ git merge <name>
 ->删除分支
 $ git branch -d <name>
+
+->查看分支合并图
+$ git log --graph
+->查看分支合并图(简图)
+$ git log --graph --pretty==one
