@@ -55,3 +55,76 @@
     > 表示输出，会覆盖文件园有的内容
     >> 表示追加，会将内容追加到已有文件的末尾
 22. |管道 一个命令的输出可以通过管道作为另一个命令的输入
+23. shutdown 选项 时间      关机/重新启动
+        -r 重新启动
+        不指定选项和参数，默认表示1分钟之后关闭电脑
+     eg:shutdown -r now 重新启动操作系统，其中now表示现在
+        shutdown now 立即关机，其中now表示现在
+        shutdown 20:55 系统在今天的20:55会关机
+        shutdown +10 系统再过十分钟后会自动关机
+        shutdown -c 取消之前指定的关机计划
+24. ifconfig 可以查看/配置计算机当前的网卡配置信息
+    ifconfig | grep inet 查看网卡对应的IP地址
+    127.0.0.1被称为本地回环/环回地址，一般用来测试本机网卡是否正常
+25. ping IP地址       检测到目标主机是否连接正常
+    ping 127.0.0.1      检测本地网卡工作正常
+    ctrl+c 终止一个终端程序的执行
+26. ssh [-p port] user@remote
+    user是在远程机器上的用户名，如果不指定的话默认为当前用户
+    remote是远程机器的地址，可以是IP/域名，或者是别名
+    port是SSH Server监听的端口，如果不指定，就为默认值22
+    exit 退出当前用户的登录
+    如果在windows系统中，可以安装PUTTY或者XShell客户端软件
+    - Putty http://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+    - XShell http://xshellcn.com
+27. scp 是一个在Linux下用来进行远程拷贝文件的命令
+    eg:#把本地当前目录下的01.py文件复制到远程家目录下的Desktop/01.py
+       #注意：‘:’后面的路径如果不是绝对路径，则以用户的家目录作为参照路径
+       scp -P port 01.py user@remote:Desktop/01.py
+       #把远程家目录下的Desktop/01.py文件复制到本地当前目录下的01.py
+       scp -P port user@remote:Desktop/01.py 01.py
+       #加上-r选项可以传送文件夹
+       #把当前目录下的demo文件夹复制到远程家目录下的Desktop
+       scp -r demo user@remote:Desktop
+       #把远程家目录下的Desktop复制到当前目录下的demo文件夹
+       scp -r user@remote:Desktop demo
+       -r 若给出的源文件是目录文件，则scp将递归复制该目录下的所有子目录和文件，目标文件必须为一个目录名
+       -P 若远程SSH服务器的端口不是22，需要使用大写字母-P选项指定端口
+       如果在Windows系统中，可以安装PUTTY，使用pscp命令行工具或者安装FileZilla使用FTP进行文件传输
+       -FileZilla https://www.filezilla.cn/download/client
+28. 常见服务端口号列表：
+    SSH服务器 22
+    Web服务器 80
+    HTTPS 443
+    FTP服务器 21
+29. SSH高级 免密码登录====================
+30. 文件/目录的权限包括：
+    读      read        r       4
+    写      write       w       2
+    执行    excute      x       1 
+31. chmod 可以修改用户/组的文件/目录的权限
+    chmod +/-rwx 文件名|目录名
+32. su 表示使用另一个用户的身份
+    sudo 以其他身份来执行命令，预设的身份为root
+33. 组信息保存在/etc/group文件中
+    /etc目录是专门用来保存系统配置信息的目录
+    组管理 终端命令
+    groupadd 组名        添加组
+    groupdel 组名        删除组
+    cat/etc/group        确认组信息
+    chgrp -R 组名 文件/目录名     递归修改文件/目录的所属组
+34. 用户信息保存在/etc/passwd 文件中
+    用户管理 终端命令
+    创建用户/设置密码/删除用户
+    useradd -m -g 组 新建用户名
+       -m 自动建立用户家目录
+       -g 指定用户所在的组，否则会建立一个同名的组
+    passwd 用户名     如果是是普通用户，直接用passwd可以修改自己的账号密码
+    userdel -r 用户名     
+       -r 选项会自动删除用户家目录
+    cat /etc/passwd | grep 用户名 新建用户后，用户信息会保存在/etc/passwd文件中
+35. 查看用户信息
+    id [用户名]    查看用户UID和GID信息
+    who     查看当前所有登录的用户列表
+    whoami  查看当前登录用户的账户名
+36. 
